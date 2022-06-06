@@ -254,7 +254,7 @@ class pytorch_pruning(object):
             if len(self.pruning_mask_from) > 0:
                 # preload pruning mask
                 self.method = -1
-                criteria_for_layer = torch.from_numpy(self.loaded_mask_criteria[layer]).type(torch.FloatTensor).cuda(async=True)
+                criteria_for_layer = torch.from_numpy(self.loaded_mask_criteria[layer]).type(torch.FloatTensor).cuda(non_blocking=True)
 
             if self.method == 0:
                 # First order Taylor expansion on the weight
